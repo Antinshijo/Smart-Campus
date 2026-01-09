@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f0f7ff, #eaf6ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Profile Card */
+.profile-wrap {
+  width: 100%;
+  max-width: 720px;
+}
+
+.card {
+  background: white;
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(9, 30, 66, 0.08);
+  animation: fadeIn 0.6s ease;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  color: #123;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.row {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row label {
+  font-size: 13px;
+  color: #415165;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.row input[type="text"],
+.row input[type="email"],
+.row input[type="tel"],
+.row input[type="number"],
+.row select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e1e8f5;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.row input:focus,
+.row select:focus {
+  border-color: #2b4eff;
+  box-shadow: 0 0 6px rgba(43, 78, 255, 0.2);
+}
+
+/* Avatar Upload Section */
+.avatar-row {
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.avatar-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff, #f1f8ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #2b4eff;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(43, 78, 255, 0.15);
+  border: 2px dashed #c7d7f5;
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2b4eff, #00c6ff);
+  color: white;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.file-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(43, 78, 255, 0.3);
+}
+
+.file-btn input {
+  display: none;
+}
+
+/* Muted text */
+.muted {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #2b4eff, #00c6ff);
+  color: white;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(43, 78, 255, 0.3);
+}
+
+.btn.outline {
+  background: white;
+  border: 1px solid #d7e3f7;
+  color: #333;
+}
+
+.btn.outline:hover {
+  background: #f1f6ff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+
+  .avatar-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

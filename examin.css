@@ -1,0 +1,172 @@
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background:#f5f7ff;
+  color:#222;
+}
+
+/* ===== TOP NAVBAR ===== */
+.navbar{
+  height:64px;
+  background:#2b4eff;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:600;
+}
+.logo span{ color:#ffdd57; }
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.profile-img{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fff;
+}
+
+#menuBtn{
+  font-size:22px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  position:fixed;
+  top:80px;
+  left:-260px;
+  width:240px;
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  transition:.3s ease;
+  z-index:10;
+}
+
+.sidebar.active{
+  left:20px;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar li{
+  padding:14px 16px;
+  margin-bottom:10px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:500;
+  color:#333;
+  transition:.25s;
+}
+
+.sidebar li:hover{
+  background:#2b4eff;
+  color:white;
+  transform:translateX(4px);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main{
+  padding:100px 32px;
+}
+
+/* ===== PANEL / CARD ===== */
+.panel{
+  background:white;
+  padding:26px;
+  border-radius:20px;
+  width:380px;
+  box-shadow:0 10px 26px rgba(0,0,0,.12);
+  animation:fadeUp .3s ease;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.panel h2{
+  margin-bottom:14px;
+  font-size:20px;
+  color:#2b4eff;
+}
+
+.panel p{
+  margin-bottom:10px;
+  font-size:14px;
+  color:#555;
+}
+
+.hidden{
+  display:none;
+}
+
+/* ===== FORM ELEMENTS ===== */
+select{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  margin-top:10px;
+  font-size:14px;
+}
+
+button{
+  margin-top:16px;
+  padding:11px 18px;
+  border:none;
+  border-radius:12px;
+  background:#2b4eff;
+  color:white;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:.25s;
+}
+
+button:hover{
+  background:#1f3bdb;
+  transform:translateY(-1px);
+}
+
+/* ===== LETTER LIST ===== */
+#letterList div{
+  background:#f4f6ff;
+  padding:14px;
+  border-radius:14px;
+  margin-bottom:12px;
+}
+
+#letterList p{
+  font-size:14px;
+  margin-bottom:6px;
+}

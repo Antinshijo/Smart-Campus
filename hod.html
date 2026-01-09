@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SmartCampus – HOD Dashboard</title>
+    <link rel="stylesheet" href="home.css" />
+    <!-- SAME CSS -->
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="site-logo">🏫 <span>SmartCampus</span></div>
+        <input
+          type="text"
+          class="search"
+          placeholder="Search students, subjects..."
+        />
+      </div>
+
+      <div class="nav-right">
+        <span class="topName" id="topName">Dr. Kumar</span>
+        <button class="avatar-btn" id="hodProfileBtn">
+          <img id="avatarImg" />
+        </button>
+        <button class="menuBtn" id="menuBtn">☰</button>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <ul>
+        <li data-action="attendance">📋 Mark Attendance</li>
+        <li data-action="exam">📝 Assign Exam</li>
+        <li data-action="leave">📄 Letter Approval</li>
+        <li data-action="subject">📚 Assign Subject</li>
+        <li data-action="activity">⭐ Activity Log</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+      <!-- WELCOME -->
+      <div class="panel welcome" id="welcome">
+        <h1>Welcome, <span id="welcomeName">Dr. Kumar</span> 👋</h1>
+        <p class="muted">Use sidebar to manage students.</p>
+      </div>
+
+      <!-- ATTENDANCE -->
+      <div class="panel hidden" id="attendancePanel">
+        <h2>Mark Attendance</h2>
+        <p class="muted">Student: Antin Shijo</p>
+
+        <select id="attSubject">
+          <option>OS</option>
+          <option>TOC</option>
+          <option>Web Technology</option>
+          <option>Graph Theory</option>
+        </select>
+
+        <div class="btn-row">
+          <button class="btn primary" onclick="markAttendance()">
+            Present
+          </button>
+        </div>
+      </div>
+
+      <!-- EXAM -->
+      <div class="panel hidden" id="examPanel">
+        <h2>Assign Exam</h2>
+
+        <select id="examSubject">
+          <option>OS</option>
+          <option>TOC</option>
+          <option>Web Technology</option>
+          <option>Graph Theory</option>
+        </select>
+
+        <input type="text" id="examName" placeholder="Exam Name" />
+
+        <div class="btn-row">
+          <button class="btn primary" onclick="assignExam()">Assign</button>
+        </div>
+      </div>
+
+      <!-- LEAVE APPROVAL -->
+      <div id="leavePanel" class="panel hidden">
+  <h2>Pending Leave Requests</h2>
+  <p class="muted">Approve as HOD</p>
+
+  <!-- 🔥 THIS IS IMPORTANT -->
+  <div id="leaveList">
+    <button onclick="approveAdvisor('${r.id}')">Approve as Advisor</button>
+<button onclick="approveHOD('${r.id}')">Approve as HOD</button>
+
+  </div>
+</div>
+
+    </main>
+
+    <script src="hod.js"></script>
+  </body>
+</html>

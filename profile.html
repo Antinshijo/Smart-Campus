@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Edit Profile — SmartCampus</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="profile-wrap">
+    <div class="card">
+      <h2>Edit Profile</h2>
+      <form id="frmProfile">
+        <div class="row avatar-row">
+          <div class="avatar-preview" id="avatarPreview"></div>
+          <div>
+            <label class="file-btn">
+              Upload Photo
+              <input id="inpPhoto" type="file" accept="image/*" />
+            </label>
+            <div class="muted small">Recommended: square image (max 1MB)</div>
+          </div>
+        </div>
+
+        <div class="row"><label>Full Name</label><input id="pName" type="text" required/></div>
+        <div class="row"><label>Email</label><input id="pEmail" type="email" required/></div>
+        <div class="row"><label>Phone</label><input id="pPhone" type="tel" /></div>
+        <div class="row"><label>Register Number</label><input id="pReg" type="text" /></div>
+        <div class="row"><label>Year</label><input id="pYear" type="text" /></div>
+        <div class="row"><label>Department</label><input id="pDept" type="text" /></div>
+
+        <div class="row actions">
+          <button class="btn primary" type="submit">Save Profile</button>
+          <button class="btn outline" type="button" id="cancelProfile">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

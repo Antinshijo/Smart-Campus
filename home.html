@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartCampus – Student Dashboard</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+
+
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="nav-left">
+    <div class="site-logo">
+      🏫 <span>SmartCampus</span>
+    </div>
+    <input type="text" class="search" placeholder="Search...">
+  </div>
+
+  <div class="nav-right">
+    <span class="topName" id="topName">Student</span>
+
+    <button class="avatar-btn" id="editProfileBtn">
+      <img id="avatarImg" alt="Profile">
+    </button>
+
+    <button class="menuBtn" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="sidebar" id="sidebar">
+  <ul>
+    <li data-action="subjects">📚 Subjects</li>
+    <li data-action="attendance">🧾 Attendance</li>
+    <li data-action="exam">✍️ Write Exam</li>
+    <li data-action="leave">📄 Leave Letter</li>
+    <li data-action="activity">⭐ Activity</li>
+  </ul>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main class="main" id="main">
+
+  <!-- WELCOME -->
+  <section class="panel welcome" id="welcome">
+    <h1>Welcome, <span id="welcomeName">Student</span> 👋</h1>
+    <p class="muted">Use the menu to open Leave, Activity or other pages.</p>
+  </section>
+
+  <!-- LEAVE OPTIONS -->
+  <section class="panel hidden" id="leaveOptions">
+    <h2>Apply Letter</h2>
+    <div class="btn-row">
+      <button class="btn primary" onclick="openLeaveForm('leave')">Leave Letter</button>
+      <button class="btn outline" onclick="openLeaveForm('onduty')">On-Duty Letter</button>
+    </div>
+  </section>
+
+  <!-- LEAVE FORM -->
+  <section class="panel form-panel hidden" id="leaveForm">
+    <h2 id="leaveTitle">Leave Letter</h2>
+
+    <form id="frmLeave">
+      <input id="fldName" type="text" placeholder="Student Name">
+      <input id="fldReg" type="text" placeholder="Register Number">
+      <input id="fldType" type="text" placeholder="Leave Type (Optional)">
+
+      <div class="dates">
+        <div>
+          <label>From</label>
+          <input id="fldFrom" type="date">
+        </div>
+        <div>
+          <label>To</label>
+          <input id="fldTo" type="date">
+        </div>
+      </div>
+
+      <textarea id="fldReason" placeholder="Reason"></textarea>
+
+   
+
+      <input type="file" id="fldFile">
+
+      <div class="actions">
+        <button type="submit" class="btn primary">Submit</button>
+        <button type="button" class="btn outline" id="cancelLeave">Cancel</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section class="panel hidden" id="activitySection">
+    <h2>Activity Log</h2>
+
+    <div id="noActivity" class="no-activity">
+      No activity yet.
+    </div>
+
+    <div class="activity-list" id="activityList"></div>
+  </section>
+  
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="home.js"></script>
+</body>
+</html>
