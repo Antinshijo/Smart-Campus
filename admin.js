@@ -1,95 +1,103 @@
-function getData(key) {
-  return JSON.parse(localStorage.getItem(key) || "[]");
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+
+  if(id === "studentList") loadStudents();
+  if(id === "hodList") loadHODs();
+  if(id === "finance") loadFees();
+  if(id === "announcementList") loadAnnouncements();
 }
 
-function setData(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+/* ===== STUDENT ===== */
+function createStudent(){
+  const students = JSON.parse(localStorage.getItem("sc_students") || "[]");
+  students.push({
+    name: cs_name.value,
+    reg: cs_reg.value,
+    year: cs_year.value
+  });
+  localStorage.setItem("sc_students", JSON.stringify(students));
+  alert("Student added ✅");
 }
 
-/* ===== CREATE STUDENT ===== */
-function createStudent() {
-  const students = getData("sc_students");
-
-  const student = {
-    name: sName.value,
-    reg: sReg.value,
-    dept: sDept.value
-  };
-
-  students.push(student);
-  setData("sc_students", students);
-  alert("Student added");
-  loadStudents();
-}
-
-/* ===== CREATE HOD ===== */
-function createHOD() {
-  const hods = getData("sc_hods");
-
-  const password = Math.floor(100000 + Math.random() * 900000);
-
-  const hod = {
-    name: hName.value,
-    dept: hDept.value,
-    phone: hPhone.value,
-    password: password
-  };
-
-  hods.push(hod);
-  setData("sc_hods", hods);
-
-  alert(`HOD added\nPassword: ${password}`);
-  loadHODs();
-}
-
-/* ===== LOAD STUDENTS ===== */
-function loadStudents() {
-  const students = getData("sc_students");
-  studentList.innerHTML = "";
-
-  students.forEach((s, i) => {
-    studentList.innerHTML += `
+function loadStudents(){
+  const students = JSON.parse(localStorage.getItem("sc_students") || "[]");
+  studentContainer.innerHTML = "";
+  students.forEach((s,i)=>{
+    studentContainer.innerHTML += `
       <div class="card">
-        ${s.name} (${s.reg}) - ${s.dept}
-        <button onclick="deleteStudent(${i})">Delete</button>
+        ${s.name} | ${s.reg} | Year ${s.year}
       </div>`;
   });
 }
 
-function deleteStudent(i) {
-  const students = getData("sc_students");
-  students.splice(i, 1);
-  setData("sc_students", students);
-  loadStudents();
+/* ===== HOD ===== */
+function createHOD(){
+  const hods = JSON.parse(localStorage.getItem("sc_hods") || "[]");
+  hods.push({name: ch_name.value, dept: ch_dept.value});
+  localStorage.setItem("sc_hods", JSON.stringify(hods));
+  alert("HOD added ✅");
 }
 
-/* ===== LOAD HODS ===== */
-function loadHODs() {
-  const hods = getData("sc_hods");
-  hodList.innerHTML = "";
+function loadHODs(){
+  const hods = JSON.parse(localStorage.getItem("sc_hods") || "[]");
+  hodContainer.innerHTML = "";
+  hods.forEach(h=>{
+    hodContainer.innerHTML += `
+      <div class="card">${h.name} - ${h.dept}</div>`;
+  });
+}
 
-  hods.forEach((h, i) => {
-    hodList.innerHTML += `
+/* ===== FEES ===== */
+function loadFees(){
+  const students = JSON.parse(localStorage.getItem("sc_students") || "[]");
+  feesContainer.innerHTML = "";
+  students.forEach((s,i)=>{
+    feesContainer.innerHTML += `
       <div class="card">
-        ${h.name} - ${h.dept} <br>
-        Password: <b>${h.password}</b>
-        <button onclick="deleteHOD(${i})">Delete</button>
+        ${s.name} (Year ${s.year})
+        <input placeholder="Fees Amount" id="fee_${i}">
+        <button onclick="saveFee(${i})">Save</button>
       </div>`;
   });
 }
 
-function deleteHOD(i) {
-  const hods = getData("sc_hods");
-  hods.splice(i, 1);
-  setData("sc_hods", hods);
-  loadHODs();
+function saveFee(i){
+  const fees = JSON.parse(localStorage.getItem("sc_fees") || "{}");
+  fees[i] = document.getElementById(`fee_${i}`).value;
+  localStorage.setItem("sc_fees", JSON.stringify(fees));
+  alert("Fees updated 💰");
 }
 
-/* ===== LOGOUT ===== */
-function logout() {
-  window.location.href = "login.html";
+/* ===== ANNOUNCEMENT ===== */
+function addAnnouncement(){
+  const anns = JSON.parse(localStorage.getItem("sc_announcements") || "[]");
+  anns.push({
+    text: an_text.value,
+    img: an_img.value,
+    time: new Date().toLocaleString()
+  });
+  localStorage.setItem("sc_announcements", JSON.stringify(anns));
+  alert("Announcement published 📢");
 }
 
-/* INIT */
-loadStudents();
-loadHODs();
+function loadAnnouncements(){
+  const anns = JSON.parse(localStorage.getItem("sc_announcements") || "[]");
+  announcementContainer.innerHTML = "";
+  anns.forEach((a,i)=>{
+    announcementContainer.innerHTML += `
+      <div class="card">
+        <p>${a.text}</p>
+        ${a.img ? `<img src="${a.img}" width="120">` : ""}
+        <small>${a.time}</small>
+        <button class="danger" onclick="deleteAnnouncement(${i})">Delete</button>
+      </div>`;
+  });
+}
+
+function deleteAnnouncement(i){
+  const anns = JSON.parse(localStorage.getItem("sc_announcements"));
+  anns.splice(i,1);
+  localStorage.setItem("sc_announcements", JSON.stringify(anns));
+  loadAnnouncements();
+}

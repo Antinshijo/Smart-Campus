@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg,#eef4ff,#f8fbff);
   min-height: 100vh;
 }
 
-/* ===== NAVBAR ===== */
-.navbar{
+/* ===== TOP NAVBAR ===== */
+.navbar {
   background: linear-gradient(90deg,#2b4eff,#00c6ff);
   color: #fff;
   padding: 16px 28px;
@@ -23,12 +23,12 @@ body{
   box-shadow: 0 6px 20px rgba(43,78,255,0.25);
 }
 
-.navbar h2{
+.navbar h2 {
   font-size: 1.3rem;
   font-weight: 600;
 }
 
-.navbar button{
+.navbar button {
   background: #fff;
   color: #2b4eff;
   border: none;
@@ -36,46 +36,122 @@ body{
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  margin-left: 8px;
   transition: 0.3s;
 }
 
-.navbar button:hover{
+.navbar button:hover {
   background: #eef3ff;
 }
 
-/* ===== CONTAINER ===== */
-.container{
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 0 20px;
+/* ===== ADMIN CONTAINER ===== */
+.admin-container {
+  display: flex;
+  height: calc(100vh - 72px);
 }
 
-/* ===== HEADINGS ===== */
-h3{
-  margin: 20px 0 10px;
-  color: #1f2a44;
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  text-align: center;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.sidebar li:hover, .sidebar li.active {
+  background: #334155;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f8fafc;
+}
+
+/* ===== PANELS ===== */
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #fff;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card button {
+  background: #ff4d4f;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: #e63946;
+}
+
 /* ===== INPUTS ===== */
-input{
+input, textarea {
   width: 100%;
   max-width: 320px;
   padding: 10px 12px;
-  margin: 6px 6px 6px 0;
+  margin: 6px 0;
   border-radius: 8px;
   border: 1px solid #d7e3f7;
   outline: none;
   transition: 0.3s;
 }
 
-input:focus{
+input:focus, textarea:focus {
   border-color: #2b4eff;
   box-shadow: 0 0 6px rgba(43,78,255,0.2);
 }
 
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
 /* ===== BUTTONS ===== */
-button{
+button {
   background: linear-gradient(90deg,#2b4eff,#00c6ff);
   color: white;
   border: none;
@@ -86,37 +162,14 @@ button{
   transition: 0.3s;
 }
 
-button:hover{
+button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(43,78,255,0.25);
 }
 
-/* ===== CARD ===== */
-.card{
-  background: #fff;
-  padding: 14px 18px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(9,30,66,0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.card button{
-  background: #ff4d4f;
-  padding: 6px 12px;
-  margin-left: 10px;
-}
-
-.card button:hover{
-  background: #e63946;
-}
-
 /* ===== SEPARATOR ===== */
-hr{
-  margin: 26px 0;
+hr {
+  margin: 20px 0;
   border: none;
   height: 1px;
   background: linear-gradient(to right,#e6eeff,#d0dcff,#e6eeff);
@@ -124,13 +177,29 @@ hr{
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px){
-  .card{
+  .admin-container{
     flex-direction: column;
-    align-items: flex-start;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .sidebar ul {
+    display: flex;
     gap: 10px;
   }
 
-  input{
+  .sidebar li {
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+  }
+
+  input, textarea {
     max-width: 100%;
   }
 }

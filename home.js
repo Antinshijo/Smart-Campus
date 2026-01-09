@@ -215,6 +215,8 @@ function loadProfile() {
   topName.textContent = p.name || 'Student';
   welcomeName.textContent = p.name || 'Student';
 }
+const fees = JSON.parse(localStorage.getItem("sc_fees")||"{}");
+
 
 
  

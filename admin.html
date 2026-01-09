@@ -1,43 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Dashboard — SmartCampus</title>
-  <link rel="stylesheet" href="admin.css" />
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<header class="navbar">
-  <h2>Admin Dashboard</h2>
-  <button onclick="logout()">Logout</button>
-</header>
+<!-- ===== TOP NAVBAR ===== -->
+<div class="navbar">
+  <h2>SmartCampus – Admin</h2>
+  <div>
+    <button onclick="showPanel('createStudent')">Create Student</button>
+    <button onclick="showPanel('createHOD')">Create HOD</button>
+    <button onclick="showPanel('createAnnouncement')">Announcement</button>
+    <button onclick="showPanel('finance')">Financial</button>
+  </div>
+</div>
 
-<div class="container">
+<div class="admin-container">
 
-  <h3>Create Student</h3>
-  <input id="sName" placeholder="Student Name">
-  <input id="sReg" placeholder="Register Number">
-  <input id="sDept" placeholder="Department">
-  <button onclick="createStudent()">Add Student</button>
+  <!-- ===== SIDEBAR ===== -->
+  <div class="sidebar">
+    <h3>Dashboard</h3>
+    <ul>
+      <li onclick="showPanel('hodList')">HOD Details</li>
+      <li onclick="showPanel('studentList')">Student Details</li>
+      <li onclick="showPanel('faculty')">Faculty Details</li>
+      <li onclick="showPanel('finance')">College Financial</li>
+      <li onclick="showPanel('announcementList')">Announcements</li>
+    </ul>
+  </div>
 
-  <hr>
+  <!-- ===== CONTENT ===== -->
+  <div class="content">
 
-  <h3>Create HOD / Faculty</h3>
-  <input id="hName" placeholder="HOD Name">
-  <input id="hDept" placeholder="Department">
-  <input id="hPhone" placeholder="Phone Number">
-  <button onclick="createHOD()">Add HOD</button>
+    <!-- CREATE STUDENT -->
+    <div id="createStudent" class="panel hidden">
+      <h3>Create Student</h3>
+      <input id="cs_name" placeholder="Name">
+      <input id="cs_reg" placeholder="Register No">
+      <input id="cs_year" placeholder="Year">
+      <button onclick="createStudent()">Add Student</button>
+    </div>
 
-  <hr>
+    <!-- CREATE HOD -->
+    <div id="createHOD" class="panel hidden">
+      <h3>Create HOD</h3>
+      <input id="ch_name" placeholder="Name">
+      <input id="ch_dept" placeholder="Department">
+      <button onclick="createHOD()">Add HOD</button>
+    </div>
 
-  <h3>Students List</h3>
-  <div id="studentList"></div>
+    <!-- STUDENT LIST -->
+    <div id="studentList" class="panel hidden">
+      <h3>Student Details</h3>
+      <div id="studentContainer"></div>
+    </div>
 
-  <hr>
+    <!-- HOD LIST -->
+    <div id="hodList" class="panel hidden">
+      <h3>HOD Details</h3>
+      <div id="hodContainer"></div>
+    </div>
 
-  <h3>HOD List</h3>
-  <div id="hodList"></div>
+    <!-- FINANCE -->
+    <div id="finance" class="panel hidden">
+      <h3>Allocate Fees</h3>
+      <div id="feesContainer"></div>
+    </div>
 
+    <!-- ANNOUNCEMENT CREATE -->
+    <div id="createAnnouncement" class="panel hidden">
+      <h3>Create Announcement</h3>
+      <textarea id="an_text" placeholder="Announcement text"></textarea>
+      <input id="an_img" placeholder="Image URL (optional)">
+      <button onclick="addAnnouncement()">Publish</button>
+    </div>
+
+    <!-- ANNOUNCEMENT LIST -->
+    <div id="announcementList" class="panel hidden">
+      <h3>Announcements</h3>
+      <div id="announcementContainer"></div>
+    </div>
+
+  </div>
 </div>
 
 <script src="admin.js"></script>
